@@ -9,9 +9,10 @@ const QUESTIONS_PER_PAGE = 10;
 const BASE_VIDEOS = [
     {
         id: 999999, subject: "logica", subjectName: "Raciocínio Lógico",
-        title: "Probabilidade - Aula Demonstrativa",
-        embedUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ", 
-        description: "Aula nativa para demonstrar o funcionamento do Modal Expansivo.",
+        title: "SINÔNIMO E ANTÔNIMO",
+        embedUrl: "https://www.youtube.com/embed/jXgaKQZDb_M?si=qP9cF5DgP2Wn4o1m", 
+        description: "Nesta aula o Prof. Álvaro Ferreira irá explicar a diferença entre Sinônimo e Antônimo (Sinonímia e Antonímia). Este assunto é muito cobrado nas provas de concurso público, então é essencial que você domine-o. E para garantir que você entendeu mesmo faremos várias questões de concurso público sobre Sinônimo e Antônimo durante a aula.
+",
         date: "29/08/2026"
     }
 ];
