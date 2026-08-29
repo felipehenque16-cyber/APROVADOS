@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Painel Admin | IBGE Estudos</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* ESTILOS EXCLUSIVOS DO ADMIN PARA NÃO POLUIR O STYLE.CSS PRINCIPAL */
+        .admin-header { background: var(--primary); color: var(--surface); }
+        .admin-header h2 { color: var(--surface); }
+        .admin-header span { color: var(--purple-light); }
+        .form-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; margin-bottom: 20px; }
+        .form-group label { display: block; color: var(--text-light); font-size: 11px; font-weight: 700; margin-bottom: 8px; }
+        .form-group input, .form-group select, .form-group textarea {
+            width: 100%; padding: 12px; border-radius: 10px; border: 1px solid var(--border);
+            background: var(--surface-soft); color: var(--text); font-size: 13px; transition: var(--transition);
+        }
+        .form-group textarea { resize: vertical; min-height: 100px; }
+        .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
+            border-color: var(--purple); outline: none; box-shadow: 0 0 0 3px var(--purple-light);
+        }
+        .alternatives-group { background: var(--surface-soft); padding: 20px; border-radius: 12px; border: 1px solid var(--border); margin-bottom: 20px; }
+        .alt-row { display: flex; gap: 15px; align-items: center; margin-bottom: 12px; }
+        .alt-letter { width: 35px; height: 35px; flex: 0 0 35px; background: var(--primary); color: white; display: flex; align-items: center; justify-content: center; border-radius: 8px; font-weight: bold; }
+        .admin-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 30px; box-shadow: var(--shadow-sm); margin-bottom: 30px; }
+        .table-container { overflow-x: auto; }
+        table { width: 100%; border-collapse: collapse; font-size: 13px; }
+        th, td { padding: 15px; text-align: left; border-bottom: 1px solid var(--border); color: var(--text); }
+        th { color: var(--text-light); font-weight: 700; text-transform: uppercase; font-size: 11px; }
+        .btn-delete { background: var(--red-light); color: var(--red); padding: 8px 12px; border-radius: 6px; font-weight: bold; transition: .2s; }
+        .btn-delete:hover { background: var(--red); color: white; }
+        .menu-category { font-size: 9px; font-weight: 800; color: var(--text-muted); text-transform: uppercase; margin: 15px 0 5px 15px; letter-spacing: 1px; }
+    </style>
+</head>
+<body>
+
+    <aside class="sidebar" id="sidebar">
+        <div class="logo-area">
+            <div class="logo-icon" style="background: var(--purple);">⚙️</div>
+            <div>
+                <h1>IBGE<span>ADMIN</span></h1>
+                <small>Gestão de Conteúdo</small>
+            </div>
+        </div>
+        <nav class="menu">
+            <div class="menu-category">Questões</div>
+            <button class="menu-item active" data-page="add"><span>➕</span><span>Adicionar Questão</span></button>
+            <button class="menu-item" data-page="manage"><span>📋</span><span>Gerenciar Questões</span></button>
+
+            <div class="menu-category">Videoaulas</div>
+            <button class="menu-item" data-page="addVideo"><span>📹</span><span>Adicionar Aula</span></button>
+            <button class="menu-item" data-page="manageVideos"><span>🎬</span><span>Gerenciar Aulas</span></button>
+
+            <a href="index.html" class="menu-item" style="text-decoration: none; margin-top: auto; border-top: 1px solid var(--border);">
+                <span>←</span><span>Voltar à Plataforma</span>
+            </a>
+        </nav>
+    </aside>
+
+    <main class="main-content">
+        <header class="topbar admin-header">
+            <button class="mobile-menu" id="mobileMenu" style="color: white; background: rgba(255,255,255,0.1);">☰</button>
+            <div class="page-title">
+                <span>Painel de Controle</span>
+                <h2 id="pageTitle">Adicionar Nova Questão</h2>
+            </div>
+            <div class="topbar-actions">
+                <button class="icon-button" id="themeToggle" style="color: white; background: rgba(255,255,255,0.1);">🌙</button>
+            </div>
+        </header>
+
+        <!-- PÁGINA: ADICIONAR QUESTÃO -->
+        <section class="page active" id="add">
+            <div class="admin-card">
+                <div class="section-heading" style="margin-top: 0;">
+                    <div><span class="section-kicker">BANCO DE QUESTÕES</span><h3>Detalhes da Questão</h3></div>
+                </div>
+                <form id="addQuestionForm">
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label>Disciplina</label>
+                            <select id="qSubject" required>
+                                <option value="portugues">Língua Portuguesa</option>
+                                <option value="logica">Raciocínio Lógico</option>
+                                <option value="especificos">Conhecimentos Específicos</option>
+                            </select>
+                        </div>
+                        <div class="form-group"><label>Tópico / Assunto</label><input type="text" id="qTopic" placeholder="Ex: Interpretação de Texto" required></div>
+                        <div class="form-group"><label>Dificuldade</label>
+                            <select id="qDifficulty" required><option value="easy">Fácil</option><option value="medium" selected>Média</option><option value="hard">Difícil</option></select>
+                        </div>
+                    </div>
+                    <div class="form-grid">
+                        <div class="form-group"><label>Banca</label><input type="text" id="qBanca" value="INSTITUTO AVALIA" required></div>
+                        <div class="form-group"><label>Ano</label><input type="number" id="qYear" value="2026" required></div>
+                    </div>
+                    <div class="form-group" style="margin-bottom: 20px;">
+                        <label>Enunciado da Questão</label><textarea id="qStatement" placeholder="Digite o texto base e a pergunta da questão..." required></textarea>
+                    </div>
+                    <div class="section-heading"><div><span class="section-kicker">ALTERNATIVAS</span><h3>Preencha as opções</h3></div></div>
+                    <div class="alternatives-group">
+                        <div class="alt-row"><div class="alt-letter">A</div><div class="form-group" style="flex:1; margin:0;"><input type="text" id="qAltA" required></div></div>
+                        <div class="alt-row"><div class="alt-letter">B</div><div class="form-group" style="flex:1; margin:0;"><input type="text" id="qAltB" required></div></div>
+                        <div class="alt-row"><div class="alt-letter">C</div><div class="form-group" style="flex:1; margin:0;"><input type="text" id="qAltC" required></div></div>
+                        <div class="alt-row"><div class="alt-letter">D</div><div class="form-group" style="flex:1; margin:0;"><input type="text" id="qAltD" required></div></div>
+                        <div class="alt-row"><div class="alt-letter">E</div><div class="form-group" style="flex:1; margin:0;"><input type="text" id="qAltE" required></div></div>
+                    </div>
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label>Gabarito Correto</label>
+                            <select id="qCorrect" required style="border-color: var(--green); background: var(--green-light); font-weight: bold; color: var(--green);">
+                                <option value="A">Alternativa A</option><option value="B">Alternativa B</option><option value="C">Alternativa C</option><option value="D">Alternativa D</option><option value="E">Alternativa E</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group" style="margin-bottom: 25px;">
+                        <label>Gabarito Comentado (Explicação)</label><textarea id="qExplanation" placeholder="Explique por que a alternativa correta é a correta..." required></textarea>
+                    </div>
+                    <button type="submit" class="primary-button large-button">💾 Salvar Questão no Banco</button>
+                </form>
+            </div>
+        </section>
+
+        <!-- PÁGINA: GERENCIAR QUESTÕES -->
+        <section class="page" id="manage">
+            <div class="admin-card">
+                <div class="section-heading" style="margin-top: 0;">
+                    <div><span class="section-kicker">BANCO DE DADOS LOCAL</span><h3>Questões Customizadas Adicionadas</h3></div>
+                </div>
+                <div class="table-container">
+                    <table>
+                        <thead><tr><th>ID</th><th>Disciplina</th><th>Assunto</th><th>Gabarito</th><th>Ação</th></tr></thead>
+                        <tbody id="questionsTableBody"></tbody>
+                    </table>
+                </div>
+                <div id="emptyManageState" class="empty-state" style="display: none; border: none; padding: 30px;"><p>Nenhuma questão customizada encontrada.</p></div>
+            </div>
+        </section>
+
+        <!-- PÁGINA: ADICIONAR VIDEOAULA -->
+        <section class="page" id="addVideo">
+            <div class="admin-card">
+                <div class="section-heading" style="margin-top: 0;">
+                    <div><span class="section-kicker">NOVA AULA</span><h3>Detalhes do Vídeo (Multinuvem)</h3></div>
+                </div>
+
+                <form id="addVideoForm">
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label>Disciplina</label>
+                            <select id="vSubject" required>
+                                <option value="portugues">Língua Portuguesa</option>
+                                <option value="logica">Raciocínio Lógico</option>
+                                <option value="especificos">Conhecimentos Específicos</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Título da Aula</label>
+                            <input type="text" id="vTitle" placeholder="Ex: Aula 01 - Crase e Regência" required>
+                        </div>
+                    </div>
+
+                    <!-- CAMPO FLEXÍVEL: Aceita texto puro ou código iframe -->
+                    <div class="form-group" style="margin-bottom: 20px;">
+                        <label>Link Direto ou Código de Incorporação (Iframe)</label>
+                        <input type="text" id="vUrl" placeholder="Cole o link do YouTube, AWS, Drive ou o código <iframe> aqui..." required>
+                        <small style="color: var(--text-muted); font-size: 10px; display: block; margin-top: 5px;">O sistema aceita links diretos ou extrai automaticamente o vídeo de códigos de incorporação de qualquer nuvem.</small>
+                    </div>
+
+                    <div class="form-group" style="margin-bottom: 25px;">
+                        <label>Descrição ou Resumo da Aula</label>
+                        <textarea id="vDescription" placeholder="Breve resumo dos tópicos abordados no vídeo..." required></textarea>
+                    </div>
+
+                    <button type="submit" class="primary-button large-button" style="background: var(--blue);">📹 Salvar Videoaula</button>
+                </form>
+            </div>
+        </section>
+
+        <!-- PÁGINA: GERENCIAR VÍDEOS -->
+        <section class="page" id="manageVideos">
+            <div class="admin-card">
+                <div class="section-heading" style="margin-top: 0;">
+                    <div><span class="section-kicker">BIBLIOTECA DE VÍDEOS</span><h3>Videoaulas Cadastradas</h3></div>
+                </div>
+                <div class="table-container">
+                    <table>
+                        <thead><tr><th>Disciplina</th><th>Título</th><th>Data de Adição</th><th>Ação</th></tr></thead>
+                        <tbody id="videosTableBody"></tbody>
+                    </table>
+                </div>
+                <div id="emptyVideoState" class="empty-state" style="display: none; border: none; padding: 30px;"><p>Nenhuma videoaula cadastrada ainda.</p></div>
+            </div>
+        </section>
+
+    </main>
+
+    <div id="toastContainer"></div>
+    <script src="admin.js"></script>
+</body>
+</html>

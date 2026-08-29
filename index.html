@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IBGE Estudos | Analista Censitário</title>
+    <meta name="description" content="Plataforma de estudos para Analista Censitário - Assistente Social">
+    <link rel="stylesheet" href="style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+</head>
+<body>
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar" id="sidebar">
+        <div class="logo-area">
+            <div class="logo-icon">IB</div>
+            <div>
+                <h1>IBGE<span>ESTUDOS</span></h1>
+                <small>Analista Censitário</small>
+            </div>
+        </div>
+
+        <nav class="menu">
+            <button class="menu-item active" data-page="dashboard">
+                <span>🏠</span><span>Início</span>
+            </button>
+            <button class="menu-item" data-page="questoes">
+                <span>📝</span><span>Banco de Questões</span>
+            </button>
+            <button class="menu-item" data-page="videos">
+                <span>📹</span><span>Videoaulas</span>
+            </button>
+            <button class="menu-item" data-page="erradas">
+                <span>❌</span><span>Questões Erradas</span>
+            </button>
+            <button class="menu-item" data-page="favoritas">
+                <span>⭐</span><span>Favoritas</span>
+            </button>
+            <button class="menu-item" data-page="estatisticas">
+                <span>📊</span><span>Estatísticas</span>
+            </button>
+        </nav>
+
+        <div class="sidebar-bottom">
+            <div class="study-card">
+                <div class="study-card-icon">🎓</div>
+                <strong>Foco no IBGE</strong>
+                <p>Continue estudando e acompanhe sua evolução.</p>
+            </div>
+            <div class="sidebar-version">V3.2</div>
+        </div>
+    </aside>
+
+    <!-- ÁREA PRINCIPAL -->
+    <main class="main-content">
+        <header class="topbar">
+            <button class="mobile-menu" id="mobileMenu">☰</button>
+            <div class="page-title">
+                <span>Preparação para o processo seletivo</span>
+                <h2 id="pageTitle">Olá! 👋</h2>
+            </div>
+            <div class="topbar-actions">
+                <button class="icon-button" id="themeToggle" title="Mudar tema">🌙</button>
+                <button class="icon-button" title="Notificações">🔔</button>
+                <div class="profile">
+                    <div class="profile-avatar">A</div>
+                    <div class="profile-info">
+                        <strong>Estudante</strong>
+                        <span>Analista Censitário</span>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- DASHBOARD -->
+        <section class="page active" id="dashboard">
+            <div class="hero">
+                <div class="hero-content">
+                    <span class="hero-label">IBGE • INSTITUTO AVALIA</span>
+                    <h1>Sua preparação começa aqui.</h1>
+                    <p>Estude para Analista Censitário — Assistente Social com questões, videoaulas e acompanhamento do seu desempenho.</p>
+                    <button class="primary-button" data-page-button="questoes">
+                        Começar a estudar <span>→</span>
+                    </button>
+                </div>
+                <div class="hero-decoration">
+                    <div class="hero-circle circle-1"></div>
+                    <div class="hero-circle circle-2"></div>
+                    <div class="hero-book">📚</div>
+                </div>
+            </div>
+
+            <div class="section-heading">
+                <div>
+                    <span class="section-kicker">SEU DESEMPENHO</span>
+                    <h3>Acompanhe sua evolução</h3>
+                </div>
+            </div>
+
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-icon blue">📝</div>
+                    <div><span>Questões respondidas</span><strong id="totalAnswered">0</strong></div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon green">✓</div>
+                    <div><span>Acertos</span><strong id="totalCorrect">0</strong></div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon red">✕</div>
+                    <div><span>Erros</span><strong id="totalWrong">0</strong></div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon purple">%</div>
+                    <div><span>Aproveitamento</span><strong id="accuracy">0%</strong></div>
+                </div>
+            </div>
+
+            <div class="section-heading">
+                <div>
+                    <span class="section-kicker">CONTEÚDO DO EDITAL</span>
+                    <h3>Áreas de estudo</h3>
+                </div>
+                <button class="text-button" data-page-button="questoes">Ver todas →</button>
+            </div>
+
+            <div class="subject-grid">
+                <article class="subject-card" data-subject="portugues">
+                    <div class="subject-top">
+                        <div class="subject-icon blue">📖</div>
+                        <span class="question-count">15 questões na prova</span>
+                    </div>
+                    <h4>Língua Portuguesa</h4>
+                    <p>Interpretação, gramática, sintaxe, concordância, regência, coesão e coerência.</p>
+                    <div class="progress">
+                        <div class="progress-header"><span>Progresso</span><strong>0%</strong></div>
+                        <div class="progress-bar"><div style="width: 0%"></div></div>
+                    </div>
+                    <button class="subject-button" data-page-button="questoes">Estudar Português →</button>
+                </article>
+
+                <article class="subject-card" data-subject="logica">
+                    <div class="subject-top">
+                        <div class="subject-icon orange">🧠</div>
+                        <span class="question-count">10 questões na prova</span>
+                    </div>
+                    <h4>Raciocínio Lógico</h4>
+                    <p>Estruturas lógicas, argumentação, diagramas, aritmética, álgebra e geometria.</p>
+                    <div class="progress">
+                        <div class="progress-header"><span>Progresso</span><strong>0%</strong></div>
+                        <div class="progress-bar"><div style="width: 0%"></div></div>
+                    </div>
+                    <button class="subject-button" data-page-button="questoes">Estudar Lógica →</button>
+                </article>
+
+                <article class="subject-card large" data-subject="especificos">
+                    <div class="subject-top">
+                        <div class="subject-icon purple">👩‍💼</div>
+                        <span class="question-count">35 questões na prova</span>
+                    </div>
+                    <h4>Conhecimentos Específicos</h4>
+                    <p>Serviço Social, legislação, Código de Ética, políticas sociais, população em situação de rua, SUAS, SUS, pesquisa social e atuação.</p>
+                    <div class="progress">
+                        <div class="progress-header"><span>Progresso</span><strong>0%</strong></div>
+                        <div class="progress-bar"><div style="width: 0%"></div></div>
+                    </div>
+                    <button class="subject-button" data-page-button="questoes">Estudar Conhecimentos Específicos →</button>
+                </article>
+            </div>
+        </section>
+
+        <!-- QUESTÕES -->
+        <section class="page" id="questoes">
+            <div class="page-header">
+                <div>
+                    <span class="section-kicker">BANCO DE QUESTÕES</span>
+                    <h2>Questões para praticar</h2>
+                    <p>Escolha a disciplina e comece a responder.</p>
+                </div>
+            </div>
+            <div class="filters-card">
+                <div class="filter-group">
+                    <label>Disciplina</label>
+                    <select id="filterSubject">
+                        <option value="all">Todas</option>
+                        <option value="portugues">Língua Portuguesa</option>
+                        <option value="logica">Raciocínio Lógico</option>
+                        <option value="especificos">Conhecimentos Específicos</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label>Status</label>
+                    <select id="filterStatus">
+                        <option value="all">Todas</option>
+                        <option value="new">Não respondidas</option>
+                        <option value="correct">Acertadas</option>
+                        <option value="wrong">Erradas</option>
+                        <option value="favorite">Favoritas</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label>Dificuldade</label>
+                    <select id="filterDifficulty">
+                        <option value="all">Todas</option>
+                        <option value="easy">Fácil</option>
+                        <option value="medium">Média</option>
+                        <option value="hard">Difícil</option>
+                    </select>
+                </div>
+            </div>
+            <div id="questionsContainer">
+                <div class="empty-state">
+                    <div class="empty-icon">📝</div>
+                    <h3>Banco de questões</h3>
+                    <p>As questões serão carregadas aqui.</p>
+                    <button class="primary-button" id="startQuestions">Começar questões</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- VIDEOAULAS -->
+        <section class="page" id="videos">
+            <div class="page-header">
+                <div>
+                    <span class="section-kicker">SALA DE AULA</span>
+                    <h2>Videoaulas</h2>
+                    <p>Clique sobre a aula para expandir e assistir em tela cheia.</p>
+                </div>
+            </div>
+            <div class="video-grid" id="videosContainer"></div>
+        </section>
+
+        <!-- ERRADAS -->
+        <section class="page" id="erradas">
+            <div class="page-header">
+                <div>
+                    <span class="section-kicker">REVISÃO</span>
+                    <h2>Questões erradas</h2>
+                    <p>Revise os conteúdos que precisam de mais atenção.</p>
+                </div>
+            </div>
+            <div class="empty-state">
+                <div class="empty-icon">❌</div>
+                <h3>Nenhuma questão errada</h3>
+                <p>Quando você errar uma questão, ela aparecerá aqui para revisão.</p>
+            </div>
+        </section>
+
+        <!-- FAVORITAS -->
+        <section class="page" id="favoritas">
+            <div class="page-header">
+                <div>
+                    <span class="section-kicker">REVISÃO</span>
+                    <h2>Minhas favoritas</h2>
+                    <p>Salve questões importantes para revisar depois.</p>
+                </div>
+            </div>
+            <div class="empty-state">
+                <div class="empty-icon">⭐</div>
+                <h3>Nenhuma favorita</h3>
+                <p>Clique na estrela de uma questão para salvá-la.</p>
+            </div>
+        </section>
+
+        <!-- ESTATÍSTICAS -->
+        <section class="page" id="estatisticas">
+            <div class="page-header">
+                <div>
+                    <span class="section-kicker">DESEMPENHO</span>
+                    <h2>Minhas estatísticas</h2>
+                    <p>Veja sua evolução durante os estudos.</p>
+                </div>
+            </div>
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-icon blue">📝</div>
+                    <div><span>Respondidas</span><strong id="statsAnswered">0</strong></div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon green">✓</div>
+                    <div><span>Acertos</span><strong id="statsCorrect">0</strong></div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon red">✕</div>
+                    <div><span>Erros</span><strong id="statsWrong">0</strong></div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon purple">%</div>
+                    <div><span>Aproveitamento</span><strong id="accuracy">0%</strong></div>
+                </div>
+            </div>
+            <div class="performance-card">
+                <h3>Desempenho por disciplina</h3>
+                <div class="performance-list">
+                    <div class="performance-item">
+                        <div class="performance-title"><span>Português</span><strong>0%</strong></div>
+                        <div class="progress-bar"><div style="width: 0%"></div></div>
+                    </div>
+                    <div class="performance-item">
+                        <div class="performance-title"><span>Raciocínio Lógico</span><strong>0%</strong></div>
+                        <div class="progress-bar"><div style="width: 0%"></div></div>
+                    </div>
+                    <div class="performance-item">
+                        <div class="performance-title"><span>Conhecimentos Específicos</span><strong>0%</strong></div>
+                        <div class="progress-bar"><div style="width: 0%"></div></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- MODAL DE VÍDEO -->
+    <div id="videoModalOverlay" class="video-modal-overlay">
+        <div class="video-modal-content">
+            <button class="video-modal-close" id="closeVideoModalBtn">&times;</button>
+            <div id="modalVideoContainer"></div>
+        </div>
+    </div>
+
+    <div id="toastContainer"></div>
+    <script src="script.js"></script>
+</body>
+</html>
