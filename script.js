@@ -8,11 +8,10 @@ const QUESTIONS_PER_PAGE = 10;
 
 const BASE_VIDEOS = [
     {
-        id: 999999, subject: "logica", subjectName: "Raciocínio Lógico",
-        title: "SINÔNIMO E ANTÔNIMO",
+        id: 999999, subject: "portugues", subjectName: "Língua Portuguesa",
+        title: "SINÔNIMO E ANTÔNIMO ",
         embedUrl: "https://www.youtube.com/embed/jXgaKQZDb_M?si=qP9cF5DgP2Wn4o1m", 
-        description: "Nesta aula o Prof. Álvaro Ferreira irá explicar a diferença entre Sinônimo e Antônimo (Sinonímia e Antonímia). Este assunto é muito cobrado nas provas de concurso público, então é essencial que você domine-o. E para garantir que você entendeu mesmo faremos várias questões de concurso público sobre Sinônimo e Antônimo durante a aula.
-",
+        description: "Nesta aula, estudamos o sentido das palavras no contexto de provas de concursos, focando no reconhecimento de sinônimos, antônimos e na substituição vocabular sem alteração de sentido ou prejuízo à correção gramatical.",
         date: "29/08/2026"
     }
 ];
